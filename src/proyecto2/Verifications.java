@@ -10,7 +10,7 @@ package proyecto2;
  */
 public class Verifications {
     
-    public boolean isOperand(String data){
+    public boolean isNumber(String data){
         
         try{
         
@@ -22,6 +22,21 @@ public class Verifications {
             return false;
         }
         
+    }
+    
+    public boolean isOperand(String data){
+        if(isNumber(data)){
+            return true;
+            
+        }else{
+            char aux = data.charAt(0);
+            if(Character.isLetter(aux)){
+                return true;
+                
+            }else{
+                return false;
+            }  
+        }
     }
     
  
@@ -36,5 +51,52 @@ public class Verifications {
         
     }
     
+    public boolean isCorrect(String[] data){
+        int aux = 0;
+        if(data.length != 0){
+            for(int i = 0; i < data.length; i++){
+                
+                if(isOperand(data[i])){
+                    aux += 1;
+                    
+                }else{
+                    aux -= 1;
+                }
+                
+            }
+            
+            if(aux == 1){
+                return true;
+                
+            }else{
+                return false;
+            }
+            
+            
+        }else{
+            return false;
+        }
+    }
+    
+    public int priorityLevel(String data){
+        
+        switch(data){
+        
+            case "+":
+            case "-":
+                return 0;
+            
+            case "*":
+            case "/":
+                return 1;
+                
+            case "^":
+                return 2;
+                
+            default:
+                return -1;
+        
+        }
+    }
     
 }
