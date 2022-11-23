@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package proyecto2;
-
+import InterfacesProyecto2.Menu;
 /**
  *
  * @author Sebastián
@@ -14,7 +14,11 @@ public class Proyecto2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+        Menu mainmenu = new Menu();
+        mainmenu.setVisible(true);
+        
+        
     }
     
 }
