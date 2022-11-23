@@ -9,59 +9,71 @@ package proyecto2;
  *
  * @author Sebastián
  */
-public class NodeBST {
-    private int data;
-    private NodeBST left;
-    private NodeBST right;
+public class binaryNode<T> {
+    private T data;
+    private binaryNode parent;
+    private binaryNode left;
+    private binaryNode right;
 
     /**
      * @return the data
      */
-    public int getData() {
+    public T getData() {
         return data;
     }
 
     /**
      * @param data the data to set
      */
-    public void setData(int data) {
+    public void setData(T data) {
         this.data = data;
     }
 
     /**
      * @return the pNext
      */
+    public binaryNode getparent() {
+        return parent;
+    }
 
     /**
-     * @return the left
+     * @param pNext the pNext to set
      */
-    public NodeBST getLeft() {
+    public void setparent(binaryNode parent) {
+        this.parent = parent;
+    }
+
+    /**
+     * @return the lSon
+     */
+    public binaryNode getLeft() {
         return left;
     }
 
     /**
-     * @param left the left to set
+     * @param left the lSon to set
      */
-    public void setLeft(NodeBST left) {
+    public void setLeft(binaryNode left) {
         this.left = left;
     }
 
     /**
-     * @return the right
+     * @return the rBrother
      */
-    public NodeBST getRight() {
+    public binaryNode getRight() {
         return right;
     }
 
     /**
-     * @param right the right to set
+     * @param right the rBrother to set
      */
-    public void setRight(NodeBST right) {
+    public void setRight(binaryNode right) {
         this.right = right;
     }
 
-    public NodeBST(int data) {
+    public binaryNode(T data) {
         this.data = data;
+        this.parent = null;
         this.left = null;
         this.right = null;
     }
