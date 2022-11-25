@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import proyecto2.*;
+
 
 /**
  *
@@ -17,8 +19,9 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
 
     //Variable global para el string de la expresion a escanear
-    String stringexpresion = "";
     
+    String stringexpresion = "";
+    String stringintopost = "";
     
     /**
      * Creates new form Menu
@@ -93,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void CargarExpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarExpresionActionPerformed
         
+      
         //Se usa JFileChooser para cargar el txt
         JFileChooser fc = new JFileChooser();
         
@@ -110,12 +114,19 @@ public class Menu extends javax.swing.JFrame {
            Integer expresionlenght = stringexpresion.length();
            //Se crea el array de char por cada caracter del string
            char [] expresion = new char[expresionlenght];
+           String [] arrayexpresion = new String[expresionlenght];
            //Se itera sobre el string para llenar el array de char
            for (int i = 0; i < stringexpresion.length(); i++) {
             
                expresion[i] = stringexpresion.charAt(i);
-               System.out.print(stringexpresion.charAt(i) + " ");
+               arrayexpresion[i] = String.valueOf(expresion[i]);
+               
             }
+           
+               InPreToPostMethods caller = new InPreToPostMethods();
+               stringintopost = caller.infixToPostfix(stringexpresion);
+               System.out.println(stringexpresion);
+               System.out.println(stringintopost); 
            
            JOptionPane.showMessageDialog(null, "Se ha cargado la expresion exitosamente");
               
@@ -130,7 +141,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_CargarExpresionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        
+         Menu mainmenu = new Menu();
         jTextArea1.selectAll();
         jTextArea1.replaceSelection(stringexpresion); 
         
