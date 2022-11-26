@@ -10,6 +10,34 @@ package proyecto2;
  */
 public class InPreToPostMethods {
     
+     public static String prefixToPostFix(String str){
+        int length = str.length();
+        Stack stack = new Stack();
+        for(int i = length-1; i >= 0; i--){
+            if(isOperator(str.charAt(i))){
+                String s1 = stack.pop().getElement().toString();
+                String s2 = stack.pop().getElement().toString();
+                String temp = s1+s2+str.charAt(i);
+                stack.push(temp);
+            }else {
+                stack.push(str.charAt(i)+"");
+            }
+        }
+        return stack.pop().getElement().toString();
+    }
+
+    public static boolean isOperator(char c) {
+        switch (c){
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+                return true;
+        }
+        return false;
+    }
+    
     public static int precedence(char ch) 
    	{ 
        	switch (ch) 
