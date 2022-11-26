@@ -99,4 +99,32 @@ public class Verifications {
         }
     }
     
+    public binaryTree buildTree(String data){
+        String[] splitData = data.split("");
+        Stack treeStack = new Stack();
+        
+        for (int i = 0; i < splitData.length; i++){
+            binaryTree current = new binaryTree();
+            current.addNode(splitData[i], null, null);
+            
+            if (isOperator(splitData[i])){
+                binaryTree aux1 = binaryTree.class.cast(treeStack.pop().getElement());
+                binaryTree aux2 = binaryTree.class.cast(treeStack.pop().getElement());
+                
+                current.insertNode(aux1.getRoot(), current.getRoot(), "right");
+                current.insertNode(aux2.getRoot(), current.getRoot(), "left");
+                
+                treeStack.push(current);
+                
+            }else{
+                treeStack.push(current);            
+            }
+            
+            
+        }
+        
+        return binaryTree.class.cast(treeStack.pop().getElement());
+    
+    }
+    
 }

@@ -12,6 +12,7 @@ package proyecto2;
  */
 public class binaryTree {
     private binaryNode root;
+    private binaryTree tNext;
 
     /**
      * @return the root
@@ -31,6 +32,8 @@ public class binaryTree {
         return root == null;
     }
     
+    
+    
     public binaryNode searchParent(binaryNode root, String parent){
         binaryNode found = null;
         if (root.getData() == parent){
@@ -46,6 +49,7 @@ public class binaryTree {
     }
     
     public void addNode(String leaf, String parent, String side){
+        
         binaryNode nodeLeaf = new binaryNode(leaf);
         if(this.isEmpty()){
             this.root = nodeLeaf;
@@ -66,35 +70,65 @@ public class binaryTree {
         
     }
     
-    public void preOrder(binaryNode root){
-        System.out.println(root.getData());
-        if(root.getLeft() != null){
-            preOrder(root.getLeft());
+    public void insertNode(binaryNode leaf, binaryNode root, String side){
+        
+        if(side == "left"){
+            root.setLeft(leaf);
+            leaf.setparent(root);
+            
+        }else{
+            root.setRight(leaf);
+            leaf.setparent(root);
         }
-        if(root.getRight() != null){
-            preOrder(root.getRight());
-        }
+        
     }
     
-    public void postOrder(binaryNode root){
+    public String preOrder(binaryNode root, String data){
+        data += root.getData();
         if(root.getLeft() != null){
-            postOrder(root.getLeft());
+            data = preOrder(root.getLeft(), data);
+        }
+        if(root.getRight() != null){
+            data = preOrder(root.getRight(), data);
+        }
+        return data;
+    }
+    
+    public String postOrder(binaryNode root, String data){
+        if(root.getLeft() != null){
+            data = postOrder(root.getLeft(), data);
         }
         
         if(root.getRight() != null){
-            postOrder(root.getRight());
+            data = postOrder(root.getRight(), data);
         }
-        System.out.println(root.getData());
+        data += root.getData();
+        return data;
     }
     
-    public void inOrder(binaryNode root){
+    public String inOrder(binaryNode root, String data){
         if(root.getLeft() != null){
-            inOrder(root.getLeft());
+            data = inOrder(root.getLeft(), data);
         }
-        System.out.println(root.getData());
+        data += root.getData();
         if(root.getRight() != null){
-            inOrder(root.getRight());
+            data = inOrder(root.getRight(), data);
         }
+        return data;
+    }
+
+    /**
+     * @return the tNext
+     */
+    public binaryTree gettNext() {
+        return tNext;
+    }
+
+    /**
+     * @param tNext the tNext to set
+     */
+    public void settNext(binaryTree tNext) {
+        this.tNext = tNext;
     }
     
 }
