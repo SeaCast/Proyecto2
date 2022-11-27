@@ -48,8 +48,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         CargarExpresion = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         graficar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,29 +79,13 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
 
-        jButton2.setText("Infix To Postfix");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 160, -1));
-
-        jButton3.setText("Prefix To Postfix");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 160, -1));
-
         graficar.setText("Visualizar Arbol");
         graficar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 graficarActionPerformed(evt);
             }
         });
-        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
+        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 300));
 
@@ -126,18 +108,6 @@ public class Menu extends javax.swing.JFrame {
         {
            //Se escanea la expresion del archivo txt 
            stringexpresion = scanner.nextLine();
-           //Se toma el tamano del string para hacer el array despues
-           Integer expresionlenght = stringexpresion.length();
-           //Se crea el array de char por cada caracter del string
-           char [] expresion = new char[expresionlenght];
-           String [] arrayexpresion = new String[expresionlenght];
-           //Se itera sobre el string para llenar el array de char
-           for (int i = 0; i < stringexpresion.length(); i++) {
-            
-               expresion[i] = stringexpresion.charAt(i);
-               arrayexpresion[i] = String.valueOf(expresion[i]);
-               
-            }
            
            JOptionPane.showMessageDialog(null, "Se ha cargado la expresion exitosamente");
               
@@ -153,6 +123,7 @@ public class Menu extends javax.swing.JFrame {
            
            
            //Si el primer valor de la expresion es un operador, la expresion es prefija, se ejecuta la conversion a postfijo
+           try {
            if(veri.isOperator(arrayExpresion[0])){
                stringpretopost = caller.prefixToPostFix(stringexpresion);
                stringexpresion = stringpretopost;
@@ -173,6 +144,13 @@ public class Menu extends javax.swing.JFrame {
            //Con la expresion postfija se construye el arbol
            expresionTree = veri.buildTree(stringexpresion);
            
+               }
+           
+           catch (Exception e){
+           
+             JOptionPane.showMessageDialog(null, "Hay un error con la expresion introducida, por favor verifique e intente de nuevo");
+           }
+        
         }
         
         
@@ -186,28 +164,6 @@ public class Menu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-        InPreToPostMethods caller = new InPreToPostMethods();
-        stringintopost = caller.infixToPostfix(stringexpresion);
-        stringexpresion = stringintopost;
-        
-        
-        
-        jTextArea1.selectAll();
-        jTextArea1.replaceSelection(stringintopost); 
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        InPreToPostMethods caller = new InPreToPostMethods();
-        stringpretopost = caller.prefixToPostFix(stringexpresion);
-        
-        jTextArea1.selectAll();
-        jTextArea1.replaceSelection(stringpretopost); 
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void graficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficarActionPerformed
         Ventana1 ventana = new Ventana1(this.expresionTree);
@@ -254,8 +210,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton CargarExpresion;
     private javax.swing.JButton graficar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
