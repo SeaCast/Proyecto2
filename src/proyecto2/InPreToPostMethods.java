@@ -10,11 +10,19 @@ package proyecto2;
  */
 public class InPreToPostMethods {
     
+    /**
+     * Metodo para convertir String de prefix a postfix.
+     * El metodo utiliza pilas para introducir los caracteres de la expresion
+     * y organizarlas de manera postfix
+     * @param str: string de la expresion prefix
+     */
+    
+    
      public static String prefixToPostFix(String str){
         int length = str.length();
         Stack stack = new Stack();
         for(int i = length-1; i >= 0; i--){
-            if(isOperator(str.charAt(i))){
+            if(isOperators(str.charAt(i))){
                 String s1 = stack.pop().getElement().toString();
                 String s2 = stack.pop().getElement().toString();
                 String temp = s1+s2+str.charAt(i);
@@ -26,7 +34,14 @@ public class InPreToPostMethods {
         return stack.pop().getElement().toString();
     }
 
-    public static boolean isOperator(char c) {
+     
+    /**
+     * Metodo para chequear operadores.
+     * El metodo chequea con un switch-case el operador de turno
+     * @param c: caracter a comparar de la expresion prefix
+     */ 
+     
+    public static boolean isOperators(char c) {
         switch (c){
             case '+':
             case '-':
@@ -37,7 +52,11 @@ public class InPreToPostMethods {
         }
         return false;
     }
-    
+    /**
+     * Metodo para chequear operadores precedencia.
+     * El metodo chequea con un switch-case el operador de turno
+     * @param ch: caracter a comparar de la expresion prefix
+     */ 
     public static int precedence(char ch) 
    	{ 
        	switch (ch) 
@@ -52,10 +71,18 @@ public class InPreToPostMethods {
        
        	case '^': 
            	return 3; 
-       	}//switch() 
+       	} 
        	return -1; 
-   	}//precedence() 
+   	} 
        
+    
+    /**
+     * Metodo para convertir String de infix a postfix.
+     * El metodo utiliza pilas para introducir los caracteres de la expresion
+     * y organizarlas de manera postfix
+     * @param exp: string de la expresion infix
+     */
+    
    	public static String infixToPostfix(String exp) 
    	{ 
    		String result = new String(""); 
@@ -81,22 +108,22 @@ public class InPreToPostMethods {
    					return "Invalid Expression";          
    				else
    					stack.pop(); 
-   			}//else_if 
+   			}
             
    			else 
    			{ 
    				while (!stack.isEmpty() && precedence(c) <= precedence(stack.getPeek().getElement().toString().charAt(0))) 
     				result += stack.pop().getElement().toString(); 
    				stack.push(c); 
-    		}//else 
+    		} 
        
-   		}//for() 
+   		} 
        
     	while (!stack.isEmpty()) 
    			result += stack.pop().getElement().toString();
        
    		return result; 
-   	}//infixToPostfix() 
+   	} 
         
    	public static int evaluatePostfix(String exp) 
    	{ 
@@ -131,11 +158,11 @@ public class InPreToPostMethods {
                     case '*': 
                       stack.push(val2*val1); 
                       break; 
-                 }//switch 
-              }//else
-           }//for 
+                 }
+              }
+           }
            return (Integer)stack.pop().getElement();     
-        }//evalluatePostfix() 
+        }
 
   public boolean isNumber(String token) {
     return Character.isDigit(token.charAt(0));
