@@ -23,6 +23,9 @@ public class Menu extends javax.swing.JFrame {
     String stringexpresion = "";
     String stringintopost = "";
     String stringpretopost = "";
+    Verifications veri = new Verifications();
+    binaryTree expresionTree = new binaryTree();
+    
    
     
     public Menu() {
@@ -134,17 +137,40 @@ public class Menu extends javax.swing.JFrame {
             e.printStackTrace();
         }
            
+           //Se crean la clase con las funciones de conversion
+           InPreToPostMethods caller = new InPreToPostMethods();
+           //Se separa el string en un arreglo para evaluar que tipo de expresion es
+           String[] arrayExpresion = stringexpresion.split("");
+           
+           
+           //Si el primer valor de la expresion es un operador, la expresion es prefija, se ejecuta la conversion a postfijo
+           if(veri.isOperator(arrayExpresion[0])){
+               stringpretopost = caller.prefixToPostFix(stringexpresion);
+               stringexpresion = stringpretopost;
+               JOptionPane.showMessageDialog(null, "Se ha cambiado la expresion prefija a posfija");
+            
+               
+           //Si el ultimo valor de la expresion es un operador, la expresion es postfija y no se hace nada    
+           }else if (veri.isOperator(arrayExpresion[arrayExpresion.length - 1])){
+           
+           //Si no se cumplen los casos anteriores, la expresion es infija, se ejecuta la conversion respectiva a postfijo
+           }else{
+               stringintopost = caller.infixToPostfix(stringexpresion);
+               stringexpresion = stringintopost;
+               JOptionPane.showMessageDialog(null, "Se ha cambiado la expresion infija a posfija");
+               
+           }
+           
+           //Con la expresion postfija se construye el arbol
+           expresionTree = veri.buildTree(stringexpresion);
+           
         }
         
         
     }//GEN-LAST:event_CargarExpresionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Verifications veri = new Verifications();
-        binaryTree expresionTree = veri.buildTree(stringexpresion);
-        
-        stringexpresion = expresionTree.inOrder(expresionTree.getRoot(), "");
-        
+     
         jTextArea1.selectAll();
         jTextArea1.replaceSelection(stringexpresion); 
         
@@ -157,6 +183,8 @@ public class Menu extends javax.swing.JFrame {
         InPreToPostMethods caller = new InPreToPostMethods();
         stringintopost = caller.infixToPostfix(stringexpresion);
         stringexpresion = stringintopost;
+        
+        
         
         jTextArea1.selectAll();
         jTextArea1.replaceSelection(stringintopost); 
