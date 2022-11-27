@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto2;
-
+import javax.swing.JPanel;
 
 
 /**
@@ -13,6 +13,8 @@ package proyecto2;
 public class binaryTree {
     private binaryNode root;
     private binaryTree tNext;
+    int num_nodos;
+    int alt;
 
     /**
      * @return the root
@@ -57,10 +59,10 @@ public class binaryTree {
             binaryNode nodeParent = searchParent(this.root, parent);
             if(nodeParent == null){
                 System.out.println("No existe el nodo");
-            } else if (side == "left" & nodeParent.getLeft() == null){
+            } else if (side.equals("left")& nodeParent.getLeft() == null){
                 nodeParent.setLeft(nodeLeaf);
                 nodeLeaf.setparent(nodeParent);
-            } else if (side == "right" & nodeParent.getRight() == null){
+            } else if (side.equals("right") & nodeParent.getRight() == null){
                 nodeParent.setRight(nodeLeaf);
                 nodeLeaf.setparent(nodeParent);
             } else{
@@ -72,7 +74,7 @@ public class binaryTree {
     
     public void insertNode(binaryNode leaf, binaryNode root, String side){
         
-        if(side == "left"){
+        if(side.equals("left")){
             root.setLeft(leaf);
             leaf.setparent(root);
             
@@ -129,6 +131,25 @@ public class binaryTree {
      */
     public void settNext(binaryTree tNext) {
         this.tNext = tNext;
+    } 
+    private void altura(binaryNode aux, int nivel) {
+        if (aux != null) {
+            altura(aux.getLeft(), nivel + 1);
+            alt = nivel;
+            altura(aux.getRight(), nivel + 1);
+        }
+    }
+
+    //Devuleve la altura del arbol
+    public int getAltura() {
+        altura(root, 1);
+        return alt;
     }
     
+     public JPanel getdibujo() {
+        ArbolExpresionGrafica dibujo = new ArbolExpresionGrafica(this);
+        return dibujo;
+    }
 }
+    
+
