@@ -47,6 +47,7 @@ public class Menu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        graficar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -92,6 +93,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 160, -1));
+
+        graficar.setText("Mostrar representacion grafica");
+        graficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                graficarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 300));
 
@@ -172,6 +181,10 @@ public class Menu extends javax.swing.JFrame {
         jTextArea1.replaceSelection(stringpretopost); 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void graficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficarActionPerformed
+        
+    }//GEN-LAST:event_graficarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,6 +222,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CargarExpresion;
+    private javax.swing.JButton graficar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
