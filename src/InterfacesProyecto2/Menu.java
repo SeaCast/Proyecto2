@@ -55,13 +55,13 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CargarExpresion.setText("Cargar Expresion");
+        CargarExpresion.setText("Cargar Nueva Expresion");
         CargarExpresion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CargarExpresionActionPerformed(evt);
             }
         });
-        jPanel1.add(CargarExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 150, -1));
+        jPanel1.add(CargarExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 200, -1));
 
         graficar.setText("Visualizar Arbol");
         graficar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +69,7 @@ public class Menu extends javax.swing.JFrame {
                 graficarActionPerformed(evt);
             }
         });
-        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 150, -1));
+        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 150, -1));
 
         exit.setBackground(new java.awt.Color(204, 0, 0));
         exit.setText("X");
@@ -79,9 +79,9 @@ public class Menu extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, -1));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 180));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -11,10 +11,10 @@ package proyecto2;
 public class InPreToPostMethods {
     
     /**
-     * Metodo para convertir String de prefix a postfix.
-     * El metodo utiliza pilas para introducir los caracteres de la expresion
-     * y organizarlas de manera postfix
+     * Metodo para convertir String de prefix a postfix.El metodo utiliza pilas para introducir los caracteres de la expresion
+ y organizarlas de manera postfix
      * @param str: string de la expresion prefix
+     * @return  string con la expresion en postfijo
      */
     
     

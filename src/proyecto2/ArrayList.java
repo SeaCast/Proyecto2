@@ -7,13 +7,13 @@ package proyecto2;
 public class ArrayList {
 
     private ArrayNode cabeza;
-    private int lenght;
+    private int length;
 
     public ArrayList(ArrayNode cabeza) {
         if(cabeza == null){
-            lenght = 0;
+            length = 0;
         } else {
-            lenght = 1;
+            length = 1;
         }
         this.cabeza = cabeza;
     }
@@ -23,7 +23,7 @@ public class ArrayList {
     }
 
     public int getLenght() {
-        return lenght;
+        return length;
     }
 
     public void setCabeza(ArrayNode cabeza) {
@@ -38,7 +38,7 @@ public class ArrayList {
             nodo.setSiguiente(getCabeza());
             setCabeza(nodo);
         }
-        lenght++;
+        length++;
     }
 
     public void insertarFinal(String array) {
@@ -52,7 +52,7 @@ public class ArrayList {
             }
             pointer.setSiguiente(nodo);
         }
-        lenght++;
+        length++;
     }
 
     public void insertarEnIndice(int pos, String array){
@@ -69,7 +69,7 @@ public class ArrayList {
             nodo.setSiguiente(pointer.getSiguiente());
             pointer.setSiguiente(nodo);
         }
-        lenght++;
+        length++;
     }
 
     public String obtenerNumero(int pos){
@@ -95,7 +95,7 @@ public class ArrayList {
             ArrayNode pointer = getCabeza();
             setCabeza(pointer.getSiguiente());
             pointer.setSiguiente(null);
-            lenght--;
+            length--;
         }
     }
 
@@ -106,7 +106,7 @@ public class ArrayList {
                 pointer = pointer.getSiguiente();
             }
             pointer.setSiguiente(null);
-            lenght--;
+            length--;
         }
     }
 
@@ -121,7 +121,7 @@ public class ArrayList {
             ArrayNode temp = pointer.getSiguiente();
             pointer.setSiguiente(temp.getSiguiente());
             temp.setSiguiente(null);
-            lenght--;
+            length--;
         }
     }
 
