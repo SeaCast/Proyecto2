@@ -46,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         CargarExpresion = new javax.swing.JButton();
         graficar = new javax.swing.JButton();
-        goOut = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -61,7 +61,7 @@ public class Menu extends javax.swing.JFrame {
                 CargarExpresionActionPerformed(evt);
             }
         });
-        jPanel1.add(CargarExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, -1));
+        jPanel1.add(CargarExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 150, -1));
 
         graficar.setText("Visualizar Arbol");
         graficar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,26 +69,29 @@ public class Menu extends javax.swing.JFrame {
                 graficarActionPerformed(evt);
             }
         });
-        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 20, 150, -1));
+        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 150, -1));
 
-        goOut.setText("Salir");
-        goOut.addActionListener(new java.awt.event.ActionListener() {
+        exit.setBackground(new java.awt.Color(204, 0, 0));
+        exit.setText("X");
+        exit.setFocusPainted(false);
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goOutActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
-        jPanel1.add(goOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 90, -1));
+        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 110));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CargarExpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarExpresionActionPerformed
-        
-      
+        //si ya hay un arbol, lo vacia
+        this.expresionTree.setRoot(null);
         //Se usa JFileChooser para cargar el txt
         JFileChooser fc = new JFileChooser();
+        
         
         int seleccion = fc.showOpenDialog(this);
         
@@ -141,6 +144,7 @@ public class Menu extends javax.swing.JFrame {
            catch (Exception e){
            
              JOptionPane.showMessageDialog(null, "Hay un error con la expresion introducida, por favor verifique e intente de nuevo");
+             
            }
         
         }
@@ -159,10 +163,10 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_graficarActionPerformed
 
-    private void goOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goOutActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_goOutActionPerformed
-
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
+ 
     /**
      * @param args the command line arguments
      */
@@ -200,7 +204,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CargarExpresion;
-    private javax.swing.JButton goOut;
+    private javax.swing.JButton exit;
     private javax.swing.JButton graficar;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -42,8 +42,8 @@ public class ArbolExpresionGrafica extends JPanel
 
     /**
      * Calcula las posiciones de los respectivos subárboles y de cada nodo que 
-     * forma parte de ese subárbol, para conocer en que posición van a ir dibujados
-     * los rectángulos representativos del árbol de la expresión.
+     * forma parte de él, para saber en donde van a ir dibujados
+     * los rectángulos del arbol.
      */
     private void calcularPosiciones() 
     {
@@ -59,10 +59,10 @@ public class ArbolExpresionGrafica extends JPanel
     
     /**
      * Calcula el tamaño de cada subárbol y lo agrega al objeto subtreeSizes de la clase
-     * de tipo HashMap que va a contener la coleccion de todos los 
-     * subárboles que contiene un arbol.
-     * @param n:Objeto de la clase NodoB <T> que se utiliza como
-     * referencia calcular el tamaño de cada subárbol.
+     * HashMap que va a contener la coleccion de todos los 
+     * subárboles del arbol de expresión.
+     * @param n:Objeto de la clase binaryNode que se utiliza como
+     * referencia al calcular el tamaño de cada subárbol.
      * @return Dimension con el tamaño de cada subárbol.
      */
     private Dimension calcularTamañoSubarbol(binaryNode n) 
@@ -87,7 +87,7 @@ public class ArbolExpresionGrafica extends JPanel
      * Calcula la ubicación de cada nodo de cada subárbol y agrega cada nodo con 
      * un objeto de tipo Rectangule que tiene la ubicación y la información específica de dónde 
      * va a ser dibujado.
-     * @param n: Objeto de tipo NodoB <T> que se utiliza como
+     * @param n: Objeto de tipo binaryNode que se utiliza como
      * referencia para calcular la ubicación de cada nodo.
      * @param left: int con alineación y orientación a la izquierda.
      * @param right: int con alineación y orientación a la derecha.
@@ -124,7 +124,7 @@ public class ArbolExpresionGrafica extends JPanel
      * Dibuja el árbol teniendo en cuenta las ubicaciones de los nodos y los 
      * subárboles calculadas anteriormente.
      * @param g: Objeto de la clase Graphics2D que permite realizar el dibujo de las líneas, rectangulos y del String de la información que contiene el Nodo.
-     * @param n: Objeto de la clase NodoB <T> que se utiliza como referencia para dibujar el árbol.
+     * @param n: Objeto de la clase binary Node que se utiliza como referencia para dibujar el árbol.
      * @param puntox: int con la posición en x desde donde se va a dibujar la línea hasta el siguiente hijo.
      * @param puntoy: int con la posición en y desde donde se va a dibujar la línea hasta el siguiente hijo.
      * @param yoffs: int con la altura del FontMetrics.

@@ -146,6 +146,7 @@ public class binaryTree {
         return alt;
     }
     
+    //Construye un objeto de la clase ArbolExpresionGrafica con el arbol.
      public JPanel getdibujo() {
         ArbolExpresionGrafica dibujo = new ArbolExpresionGrafica(this);
         return dibujo;

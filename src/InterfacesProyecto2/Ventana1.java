@@ -22,9 +22,9 @@ public class Ventana1 extends javax.swing.JFrame {
     public static Menu w1;
 
     /**
-     * Creates new form Ventana1
-     * 
+     * Crea una nueva ventana1 y le pasa el arbol de expresion cargado anteriormente y el menu (para poder devolverse)
      * @param arbol
+     * @param w1
      */
     public Ventana1(binaryTree arbol, Menu w1) {
         initComponents();
