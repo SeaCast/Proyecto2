@@ -43,23 +43,15 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         CargarExpresion = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         graficar = new javax.swing.JButton();
+        goOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 430, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -69,15 +61,7 @@ public class Menu extends javax.swing.JFrame {
                 CargarExpresionActionPerformed(evt);
             }
         });
-        jPanel1.add(CargarExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-
-        jButton1.setText("Mostrar String Expresion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
+        jPanel1.add(CargarExpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, -1));
 
         graficar.setText("Visualizar Arbol");
         graficar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,9 +69,17 @@ public class Menu extends javax.swing.JFrame {
                 graficarActionPerformed(evt);
             }
         });
-        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+        jPanel1.add(graficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 20, 150, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 300));
+        goOut.setText("Salir");
+        goOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goOutActionPerformed(evt);
+            }
+        });
+        jPanel1.add(goOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 90, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,20 +148,20 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_CargarExpresionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
-        jTextArea1.selectAll();
-        jTextArea1.replaceSelection(stringexpresion); 
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void graficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficarActionPerformed
-        Ventana1 ventana = new Ventana1(this.expresionTree);
-        ventana.setVisible(true);
-        ventana.setLocationRelativeTo(null);
+        
+        if(!expresionTree.isEmpty()){
+            Ventana1 ventana = new Ventana1(this.expresionTree, this);
+            this.setVisible(false);
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "El arbol esta vacio, por favor cargue una expresion antes de visualizar el arbol");
+        }
     }//GEN-LAST:event_graficarActionPerformed
+
+    private void goOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goOutActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_goOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,10 +200,8 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CargarExpresion;
+    private javax.swing.JButton goOut;
     private javax.swing.JButton graficar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@ package proyecto2;
   /**
  *
  * @author Yargen
+ * @version 21/11/2022
  */
 
 import java.awt.*;

@@ -7,6 +7,7 @@ package proyecto2;
 /**
  *
  * @author Sebastián
+ * @version 11/27/2022
  */
 public class Verifications {
     
@@ -24,6 +25,13 @@ public class Verifications {
         
     }
     
+    /**
+     * Funcion verificacion de operandos
+     * @param data dato a verificar
+     * @return booleano estado si es operando o no
+     * Se utiliza esta funcion para verificar si algun caracter es un operando
+     */
+    
     public boolean isOperand(String data){
         if(isNumber(data)){
             return true;
@@ -39,7 +47,13 @@ public class Verifications {
         }
     }
     
- 
+    /**
+     * Funcion verificacion de operadores
+     * @param data dato a verificar
+     * @return booleano estado si es operador o no
+     * Se utiliza esta funcion para verificar si algun caracter es un operador
+     */
+    
     public boolean isOperator(String data){
     
         if (data.equals("+") || data.equals("-") || data.equals("*") || data.equals("/") || data.equals("^")){
@@ -51,32 +65,39 @@ public class Verifications {
         
     }
     
-    public boolean isCorrect(String[] data){
-        int aux = 0;
-        if(data.length != 0){
-            for(int i = 0; i < data.length; i++){
-                
-                if(isOperand(data[i])){
-                    aux += 1;
-                    
-                }else{
-                    aux -= 1;
-                }
-                
-            }
-            
-            if(aux == 1){
-                return true;
-                
-            }else{
-                return false;
-            }
-            
-            
-        }else{
-            return false;
-        }
-    }
+//    public boolean isCorrect(String[] data){
+//        int aux = 0;
+//        if(data.length != 0){
+//            for(int i = 0; i < data.length; i++){
+//
+//                if(isOperand(data[i])){
+//                    aux += 1;
+//
+//                }else{
+//                    aux -= 1;
+//                }
+//
+//            }
+//
+//            if(aux == 1){
+//                return true;
+//
+//            }else{
+//                return false;
+//            }
+//
+//
+//        }else{
+//            return false;
+//        }
+//    }
+    
+    /**
+     * Prioridad de operador
+     * @param data operador
+     * @return nivel de prioridad
+     * Se ingresa un operador, la funcion verificara que caso es y retornara su nivel de prioridad
+     */
     
     public int priorityLevel(String data){
         
@@ -98,6 +119,13 @@ public class Verifications {
         
         }
     }
+    
+    /**
+     * Constructor de arbol de expresiones
+     * @param data expresion de tipo postfija
+     * @return arbol de expresion
+     * Se construye un arbol de expresion a partir de una expresion postfija, la expresion se evalua por caracter, si es un operando se apila, si es un operador se desapilan dos elementos y se unen al arbol
+     */
     
     public binaryTree buildTree(String data){
         String[] splitData = data.split("");
